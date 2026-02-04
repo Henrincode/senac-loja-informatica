@@ -1,0 +1,14 @@
+.lista-produtos .card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card {
+    height: 70vh;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
