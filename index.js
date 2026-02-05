@@ -54,7 +54,16 @@ conexao.connect((erro) =>  {
 app.get("/produtos", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
     // res.send(lista_produtos)
-    conexao.query("SELECT * FROM produtos order by avaliacao asc", ((erro, lista_produtos, campos) => {
+    conexao.query("SELECT * FROM produtos", ((erro, lista_produtos, campos) => {
+        console.log(lista_produtos)
+        res.send(lista_produtos)
+    }))
+})
+
+app.get("/unidades", function (req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    // res.send(lista_produtos)
+    conexao.query("SELECT * FROM unidades", ((erro, lista_produtos, campos) => {
         console.log(lista_produtos)
         res.send(lista_produtos)
     }))

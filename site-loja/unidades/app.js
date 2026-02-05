@@ -1,43 +1,58 @@
-function fnMontarCardProduto(produto){
+function fnMontarCardUnidade(u){
+
+    //         id
+    //         nome_da_loja
+    //         telefone
+    //         email
+    //         endereco
+    //         latitude
+    //         longitude
+    //         foto
     let cartao = `
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3">
-                <div class="card">
-                    <img src="${produto.foto}"
-                        class="card-img-top" alt="${produto.nome}">
-                    <div class="card-body">
-                        <h5 class="card-title">${produto.titulo}</h5>
-                        <p class="card-text">${produto.descricao}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 mb-0">R$ ${produto.preco}</span>
-                            <div>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star text-warning"></i>
-                                <small class="text-muted">(${produto.avaliacao})</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light">
-                        <button class="btn btn-primary btn-sm">Comprar</button>
-                        <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-            </div>
+        <li class="overflow-hidden rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-500">
+            <img class="aspect-video object-cover" src="${u.foto}">
+            ${gmap(u.latitude, u.longitude)}
+            <ul class="flex flex-col gap-1 px-3 py-2 text-white">
+                <li class="border-b-2 border-gray-400/20 font-semibold text-xl text-center">
+                    ${u.nome_da_loja}
+                </li>
+                <li>
+                    ☎ ${u.telefone}
+                </li>
+                <li>
+                    📧 ${u.email}
+                </li>
+                <li>
+                    🗺 ${u.endereco}
+                </li>
+            </ul>
+        </li>
     `
-    document.querySelector(".lista-produtos").innerHTML += cartao
+    document.querySelector("#listaUnidades").innerHTML += cartao
 }
 
 function fnCarregarDados(){
-    fetch('http://localhost:3000/produtos/', { method: 'GET'})
+    fetch('http://localhost:3000/unidades/', { method: 'GET'})
     .then(response => response.json ())
-    .then((produtos) => {
-        produtos.forEach(produto => {
-            fnMontarCardProduto(produto)
+    .then((unidades) => {
+        unidades.forEach(unidade => {
+            fnMontarCardUnidade(unidade)
         });
     })
     .catch(erro => console.log(erro.message))
+}
+
+function gmap(lat, lng) {
+    return `
+        <iframe
+        class="aspect-video"
+        src="https://www.google.com/maps?q=${lat},${lng}&output=embed"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    `
 }
 
 fnCarregarDados()
