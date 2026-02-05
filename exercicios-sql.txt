@@ -1,0 +1,29 @@
+1- trazer apenas 12 primeiros produtos
+SELECT * FROM produtos limit 12
+
+2- trazer apenas produtos que comecem com a letra a
+SELECT * FROM produtos where titulo like 'a%'
+
+3- trazer apenas produtos que tenham o preço de 410
+SELECT * FROM produtos where preco = 410
+
+4- trazer apenas produtos com avaliação 4 e 5
+SELECT * FROM produtos where avaliacao = 4 or avaliacao = 5
+
+5- trazer apenas produtos com avaliação 1 e 5
+SELECT * FROM produtos where avaliacao = 1 or avaliacao = 5
+
+6- trazer apenas produtos entre id 21 e 32
+SELECT * FROM produtos where id >= 21 and id <= 32
+
+7- trazer apenas os 12 últimos produtos
+SELECT * FROM produtos order by id desc limit 12
+
+8- trazer apenas os 12 primeiros produtos com avaliação 5
+SELECT * FROM produtos where avaliacao = 5 limit 12
+
+9- trazer todo os produtos em ordem de preço do menor para o maior
+SELECT * FROM produtos order by preco asc
+
+10- trazer todo os produtos em ordem de avaliação do menor para o maior
+SELECT * FROM produtos order by avaliacao asc

@@ -1,5 +1,7 @@
+const mysql = require('mysql')
 const express = require('express')
 const app = express()
+
 
 app.get('/', function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -30,13 +32,32 @@ app.get('/', function (req, res) {
 //     }
 // ]
 
-const lista_produtos = require ('./dados.json')
+
+const conexao = mysql.createConnection({
+    host: '108.179.193.209',
+    user: 'gutoxa27_alunos',
+    password: 'JD_eXLNHp1ZG',
+    database: 'gutoxa27_bd_loja'
+})
+
+conexao.connect((erro) =>  {
+    if(erro){
+        throw erro
+        console.log('Deu ruim na conexão')
+    } else {
+        console.log('Conexão deu bom')
+    }
+})
 
 // Read All - [GET] / produtos
 
 app.get("/produtos", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.send(lista_produtos)
+    // res.send(lista_produtos)
+    conexao.query("SELECT * FROM produtos order by avaliacao asc", ((erro, lista_produtos, campos) => {
+        console.log(lista_produtos)
+        res.send(lista_produtos)
+    }))
 })
 
 app.listen (3000)
