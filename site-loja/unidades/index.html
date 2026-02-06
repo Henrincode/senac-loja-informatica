@@ -5,36 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja do Zé</title>
-    <link rel="stylesheet" href="../../style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
 
     <!-- nav -->
-     <div class="bg-blue-500">
-        <div class="box bg-gray-500">a</div>
+     <div class="bg-blue-500 text-white">
+        <div class="box flex flex-row justify-between items-center p-2">
+            <div class="text-4xl">Loja do ZÉ</div>
+            <ul class="
+                flex
+                flex-row
+                justify-between
+                gap-4
+
+                [&_li]:relative
+                [&_li]:flex
+                [&_li]:flex-col
+                [&_li]:group
+
+                [&_a]:hover:text-yellow-300
+                [&_a]:
+                [&_a]:
+
+                [&_.linha]:absolute
+                [&_.linha]:bottom-0
+                [&_.linha]:hidden
+                [&_.linha]:w-full
+                [&_.linha]:h-0.5
+                [&_.linha]:bg-white
+                [&_.linha]:
+                [&_.linha]:
+            ">
+                <li class="group"><a href="/site-loja/">Produtos</a></li>
+                <li>|</li>
+                <li><a href="/site-loja/unidades/">Unidades</a></li>
+            </ul>
+        </div>
      </div>
 
     <div class="box">
-        <h1 class="text-center mb-5 mt-3">Lista de Produtos</h1>
+        <h1 class="text-8xl text-center text-gray-700 mb-10 mt-10">🏣 Lista de unidades</h1>
 
-        <div>
-            <!-- 
-            id
-            nome_da_loja
-            telefone
-            email
-            endereco
-            latitude
-            longitude
-            foto
-             -->
-
-
-        </div>
-
-        <ul id="listaUnidades" class="grid grid-cols-4 gap-4"></ul>
+        <ul id="listaUnidades" class="grid grid-cols-3 gap-4"></ul>
     </div>
     <script src="app.js"></script>
 </body>

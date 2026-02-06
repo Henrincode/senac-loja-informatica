@@ -1,15 +1,7 @@
 function fnMontarCardUnidade(u){
-
-    //         id
-    //         nome_da_loja
-    //         telefone
-    //         email
-    //         endereco
-    //         latitude
-    //         longitude
-    //         foto
+    
     let cartao = `
-        <li class="overflow-hidden rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-500">
+        <li class="overflow-hidden rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-700">
             <img class="aspect-video object-cover" src="${u.foto}">
             ${gmap(u.latitude, u.longitude)}
             <ul class="flex flex-col gap-1 px-3 py-2 text-white">

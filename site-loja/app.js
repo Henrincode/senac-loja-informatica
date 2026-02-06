@@ -1,28 +1,26 @@
 function fnMontarCardProduto(produto) {
     let cartao = `
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3">
-            <div class="card">
-                <img src="${produto.foto}"
-                    class="card-img-top" alt="${produto.nome}">
-                <div class="card-body">
-                    <h5 class="card-title">${produto.titulo}</h5>
-                    <p class="card-text">${produto.descricao}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="h5 mb-0">R$ ${produto.preco}</span>
-                        <div>
+            <div class="overflow-hidden flex flex-col rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-700">
+                <img class="aspect-video object-cover" src="${produto.foto}"
+                    class="" alt="${produto.nome}">
+                <div class="flex-1 p-4 text-white">
+                    <h5 class="text-2xl">${produto.titulo}</h5>
+                    <p class="text-lg">${produto.descricao}</p>
+                    <div class="flex flex-row justify-between mt-2">
+                        <span class="text-xl">R$ ${produto.preco}</span>
+                        <div class="flex flex-row items-center gap-2 text-yellow-300">
                             ${estrelas(produto.avaliacao)}
-                            <small class="text-muted">(${produto.avaliacao})</small>
+                            <small class="text-white">(${produto.avaliacao})</small>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between bg-light">
-                    <button class="btn btn-primary btn-sm">Comprar</button>
-                    <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-heart"></i></button>
+                <div class="flex flex-row justify-between items-center p-2 bg-gray-500">
+                    <button class="px-3 py-1 rounded-md text-white bg-blue-600 hover:bg-blue-300 cursor-pointer">Comprar</button>
+                    <button class="flex justify-center items-center px-2 py-1 border border-gray-800 hover:border-gray-50 rounded-md hover:text-white hover:bg-gray-400 cursor-pointer"><i class="bi bi-heart"></i></button>
                 </div>
             </div>
-        </div>
     `
-    document.querySelector(".lista-produtos").innerHTML += cartao
+    document.querySelector("#listaProdutos").innerHTML += cartao
 }
 
 function fnCarregarDados() {
@@ -40,9 +38,9 @@ function estrelas(e) {
     let estrelas = ''
     for (i = 1; i <= 5; i++) {
         if (i <= e) {
-            estrelas += `<i class="bi bi-star-fill text-warning"></i>`
+            estrelas += `<i class="bi bi-star-fill text-warning"></i> `
         } else {
-            estrelas += `<i class="bi bi-star text-warning"></i>`
+            estrelas += `<i class="bi bi-star text-warning"></i> `
         }
     }
     return estrelas
