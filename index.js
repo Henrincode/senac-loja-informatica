@@ -42,8 +42,8 @@ const conexao = mysql.createConnection({
 
 conexao.connect((erro) =>  {
     if(erro){
-        throw erro
         console.log('Deu ruim na conexão')
+        throw erro
     } else {
         console.log('Conexão deu bom')
     }
@@ -53,8 +53,16 @@ conexao.connect((erro) =>  {
 
 app.get("/produtos", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
-    // res.send(lista_produtos)
     conexao.query("SELECT * FROM produtos", ((erro, lista_produtos, campos) => {
+        console.log(lista_produtos)
+        res.send(lista_produtos)
+    }))
+})
+
+app.get("/produtos/:categoria", function (req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    const categoria = req.params.categoria
+    conexao.query(`SELECT * FROM produtos where categoria = '${categoria}'`, ((erro, lista_produtos, campos) => {
         console.log(lista_produtos)
         res.send(lista_produtos)
     }))

@@ -24,7 +24,23 @@ function fnMontarCardProduto(produto) {
 }
 
 function fnCarregarDados() {
-    fetch('http://localhost:3000/produtos/', { method: 'GET' })
+
+}
+
+function fnCarregarDados() {
+
+    const parametros = new URLSearchParams(window.location.search)
+    const existe_categoria = parametros.has('categoria')
+
+    let rota_categoria = ""
+
+    if (existe_categoria) {
+        rota_categoria = parametros.get('categoria') + "/"
+    }
+
+    console.log(rota_categoria)
+
+    fetch('http://localhost:3000/produtos/' + rota_categoria, { method: 'GET' })
         .then(response => response.json())
         .then((produtos) => {
             produtos.forEach(produto => {
@@ -33,6 +49,7 @@ function fnCarregarDados() {
         })
         .catch(erro => console.log(erro.message))
 }
+
 
 function estrelas(e) {
     let estrelas = ''

@@ -13,9 +13,46 @@
 <body>
 
     <!-- nav -->
-     <div class="bg-blue-500 text-white">
+    <div class="bg-blue-500 text-white">
         <div class="box flex flex-row justify-between items-center p-2">
-            <div class="text-4xl">Loja do ZÉ</div>
+            <div class="text-xl md:text-4xl">Loja do ZÉ</div>
+            <ul class="
+                flex
+                flex-row
+                justify-between
+                gap-4
+
+                [&_li]:relative
+                [&_li]:flex
+                [&_li]:flex-col
+                [&_li]:group
+
+                [&_a]:hover:text-yellow-300
+                [&_a]:
+                [&_a]:
+
+                [&_.linha]:absolute
+                [&_.linha]:bottom-0
+                [&_.linha]:hidden
+                [&_.linha]:w-full
+                [&_.linha]:h-0.5
+                [&_.linha]:bg-white
+                [&_.linha]:
+                [&_.linha]:
+            ">
+                <li>
+                    <a href="/site-loja/">Todos os produtos</a>
+                </li>
+                <li>
+                    <a href="/site-loja/?categoria=tênis">Tênis</a>
+                </li>
+                <li>
+                    <a href="/site-loja/?categoria=camisetas">Camisetas</a>
+                </li>
+                <li>
+                    <a href="/site-loja/?categoria=óculos">Óculos</a>
+                </li>
+            </ul>
             <ul class="
                 flex
                 flex-row
@@ -45,13 +82,14 @@
                 <li><a href="/site-loja/unidades/">Unidades</a></li>
             </ul>
         </div>
-     </div>
+    </div>
     <!-- nav -->
 
     <div class="box">
-        <h1 class="text-8xl text-center text-gray-700 mb-10 mt-10">👟 Lista de produtos</h1>
+        <h1 class="text-2xl sm:text-4xl md:text-6xl lg:text-8xl text-center text-gray-700 mb-10 mt-10">👟 Lista de
+            produtos</h1>
 
-        <ul id="listaProdutos" class="grid grid-cols-3 gap-4"></ul>
+        <ul id="listaProdutos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></ul>
     </div>
     <script src="app.js"></script>
 </body>
