@@ -1,6 +1,6 @@
 function fnMontarCardProduto(produto) {
     let cartao = `
-            <div class="overflow-hidden flex flex-col rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-700">
+            <div class="overflow-hidden flex flex-col rounded-xl border-4 transition-all hover:-translate-y-2 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-700">
                 <img class="aspect-video object-cover" src="${produto.foto}"
                     class="" alt="${produto.nome}">
                 <div class="flex-1 p-4 text-white">
@@ -31,16 +31,44 @@ function fnCarregarDados() {
 
     const parametros = new URLSearchParams(window.location.search)
     const existe_categoria = parametros.has('categoria')
+    const existe_ordem = parametros.has('ordem')
 
+    let ordem = ''
+    let categoria = ''
     let rota_categoria = ""
+    let rota_ordem = ""
 
     if (existe_categoria) {
-        rota_categoria = parametros.get('categoria') + "/"
+        categoria = parametros.get('categoria')
+        rota_categoria = categoria + "/"
+        const filtros = `
+            <span>Ordenar por: </span>
+            <a href="/site-loja/?categoria=${categoria}&ordem=preco">preço</a>
+            <a href="/site-loja/?categoria=${categoria}&ordem=titulo">titulo</a>
+        `
+        document.querySelector('#filtros').innerHTML = filtros
+    } else {
+        const filtros = `
+            <span>Ordenar por: </span>
+            <a href="/site-loja/?ordem=preco">preço</a>
+            <a href="/site-loja/?ordem=titulo">titulo</a>
+        `
+        document.querySelector('#filtros').innerHTML = filtros
     }
 
-    console.log(rota_categoria)
+    if (existe_ordem) {
+        ordem = parametros.get('ordem')
+        rota_ordem = ordem + "/"
+    }
 
-    fetch('http://localhost:3000/produtos/' + rota_categoria, { method: 'GET' })
+    let url = 'http://localhost:3000/produtos/'
+    if (existe_categoria) {
+        url += rota_categoria + rota_ordem
+    } else if (existe_ordem) {
+        url += '?ordem=' + ordem
+    }
+
+    fetch(url, { method: 'GET' })
         .then(response => response.json())
         .then((produtos) => {
             produtos.forEach(produto => {
@@ -49,7 +77,6 @@ function fnCarregarDados() {
         })
         .catch(erro => console.log(erro.message))
 }
-
 
 function estrelas(e) {
     let estrelas = ''

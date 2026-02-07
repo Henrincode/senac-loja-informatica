@@ -49,30 +49,63 @@ conexao.connect((erro) =>  {
     }
 })
 
-// Read All - [GET] / produtos
-
+// get all products
 app.get("/produtos", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
-    conexao.query("SELECT * FROM produtos", ((erro, lista_produtos, campos) => {
-        console.log(lista_produtos)
+    const ordem = req.query.ordem
+    conexao.query(`SELECT * FROM produtos ${ordem && `order by ${ordem}`}`, ((erro, lista_produtos, campos) => {
+        // console.log(lista_produtos)
         res.send(lista_produtos)
     }))
 })
 
-app.get("/produtos/:categoria", function (req, res){
+// get all products witch filter
+// app.get("/produtos/:ordem", function (req, res){
+//     res.setHeader('Access-Control-Allow-Origin', '*')
+//     const ordem = req.params.ordem
+//     conexao.query(`SELECT * FROM produtos order by ${ordem}`, ((erro, lista_produtos, campos) => {
+//         // console.log(lista_produtos)
+//         res.send(lista_produtos)
+//     }))
+// })
+
+// filtrar categorias
+app.get("/produtos/:categoria/", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
     const categoria = req.params.categoria
     conexao.query(`SELECT * FROM produtos where categoria = '${categoria}'`, ((erro, lista_produtos, campos) => {
-        console.log(lista_produtos)
+        // console.log(lista_produtos)
         res.send(lista_produtos)
     }))
 })
 
+// filtrar com ordem
+app.get("/produtos/:categoria/:ordem", function (req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    const categoria = req.params.categoria
+    const ordem = req.params.ordem
+    console.log(ordem)
+    conexao.query(`SELECT * FROM produtos where categoria = '${categoria}' order by ${ordem}`, ((erro, lista_produtos, campos) => {
+        // console.log(lista_produtos)
+        res.send(lista_produtos)
+    }))
+})
+
+// pegar lista de categorias
+app.get("/lista/categorias", function (req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    conexao.query(`SELECT distinct categoria FROM produtos`, ((erro, lista_categorias, campos) => {
+        // console.log(lista_categorias)
+        res.send(lista_categorias)
+    }))
+})
+
+// get units
 app.get("/unidades", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
     // res.send(lista_produtos)
     conexao.query("SELECT * FROM unidades", ((erro, lista_produtos, campos) => {
-        console.log(lista_produtos)
+        // console.log(lista_produtos)
         res.send(lista_produtos)
     }))
 })
