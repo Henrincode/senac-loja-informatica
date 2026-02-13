@@ -24,7 +24,7 @@ function fnCadastrarProdutos() {
     console.dir(formDados)
 
     fetch('http://localhost:3000/produto/', {
-        method: "GET",
+        method: "POST",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(formDados)
     })

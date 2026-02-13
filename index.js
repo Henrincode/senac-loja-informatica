@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
 // get all products
 app.get("/produtos", function (req, res) {
     const ordem = req.query.ordem
-    conexao.query(`SELECT * FROM produtos ${ordem && `order by ${ordem}`}`, ((erro, lista_produtos, campos) => {
+    conexao.query(`SELECT * FROM produtos ${ordem ? `order by ${ordem}` : "order by id desc"}`, ((erro, lista_produtos, campos) => {
         // console.log(lista_produtos)
         res.send(lista_produtos)
     }))
@@ -76,8 +76,25 @@ app.post("/produto/", function (req, res) {
     const { titulo, preco, descricao, avaliacao, foto, categoria } = req.body;
 
     conexao.query(`
-        INSERT INTO produtos(titulo, foto, descricao, preco, avaliacao, categoria)
-        values('${titulo}','${foto}','${descricao}',${preco}, ${avaliacao}, '${categoria}')`,
+        INSERT INTO produtos (titulo, foto, descricao, preco, avaliacao, categoria)
+        values ('${titulo}','${foto}','${descricao}', '${preco}', '${avaliacao}', '${categoria}')`,
+        function (erro, resultado) {
+            if (erro) {
+                res.json(erro);
+            }
+
+            res.send(resultado.insertId);
+        });
+})
+
+// creat unit
+app.post("/unidades/", function (req, res) {
+
+    const { nome_da_loja, telefone, email, endereco, latitude, longitude, foto } = req.body;
+
+    conexao.query(`
+        INSERT INTO unidades (nome_da_loja, telefone, email, endereco, latitude, longitude, foto)
+        values ('${nome_da_loja}', '${telefone}', '${email}', '${endereco}', '${latitude}', '${longitude}', '${foto}')`,
         function (erro, resultado) {
             if (erro) {
                 res.json(erro);
