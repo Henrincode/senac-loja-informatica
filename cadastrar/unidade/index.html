@@ -7,16 +7,22 @@
     <title>Loja do Zé - Unidades</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
+    
+    <div id="navBar"></div>
 
-    <div class="container">
-        <h1 class="text-center text-6xl text-blue-500 mb-5 mt-3">Unidades</h1>
+    <div class="box">
+        <h1 class="text-center text-6xl text-blue-500 m-6">🏪 Cadastrar unidade</h1>
     </div>
 
     <div class="
+        group
+        transition-all
+        **:transition-all
+
         box
         grid
         grid-cols-2
@@ -25,11 +31,16 @@
         rounded-2xl
         overflow-hidden
 
-        border-blue-500
-        bg-blue-500
+        border-blue-400
+        bg-blue-400
+        hover:border-blue-600
+        hover:bg-blue-600
     ">
         <!-- imagem -->
         <div id="fundo-imagem" class="
+            border-r-4
+            border-blue-400
+            group-hover:border-blue-600
             bg-yellow-200
             bg-cover
             bg-center
@@ -38,7 +49,7 @@
         </div>
 
         <!-- form -->
-        <form id="form-produtoss" action="" class="
+        <form id="form-unidade" action="" class="
             grid
             grid-cols-2
             gap-2
@@ -57,7 +68,9 @@
             [&_input]:px-2
             [&_input]:py-1
             [&_input]:rounded-full
-            [&_input]:bg-blue-200
+            [&_input]:outline-none
+            [&_input]:bg-blue-400
+            [&_input]:hover:bg-blue-600
 
             [&_button]:px-3
             [&_button]:py-2
@@ -65,7 +78,7 @@
             [&_button]:rounded-full
             [&_button]:text-white
             [&_button]:bg-blue-600
-            [&_button]:hover:bg-blue-400
+            [&_button]:hover:bg-blue-900
             [&_button]:cursor-pointer
         ">
             <div class="col col-span-2">
@@ -102,12 +115,8 @@
         </form>
     </div>
 
-
-
-
-
-
-    <script src="app-form-unidade.js"></script>
+    <script src="/components/NavBar.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

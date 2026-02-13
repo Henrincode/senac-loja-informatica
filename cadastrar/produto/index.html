@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja do Zé</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div id="navBar"></div>
+
+    <div class="box">
+        <h1 class="text-center text-6xl text-blue-500 m-6">👟 Cadastrar produto</h1>
+    </div>
+
+    <div class="
+        group
+        transition-all
+        **:transition-all
+
+        box
+        grid
+        grid-cols-2
+
+        border-4
+        rounded-2xl
+        overflow-hidden
+
+        border-blue-400
+        bg-blue-400
+        hover:border-blue-600
+        hover:bg-blue-600
+    ">
+        <!-- imagem -->
+        <div id="fundo-imagem" class="
+            flex
+            justify-center
+            items-center
+            p-10
+            border-r-4
+            border-blue-400
+            group-hover:border-blue-600
+            bg-yellow-200
+            bg-cover
+            bg-center
+            bg-[url(https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
+        ">
+            <p
+                class="opacity-0 group-hover:opacity-100 backdrop-blur p-4 rounded-xl text-light text-2xl text-justify hyphens-auto text-white bg-black/30">
+                Hora de
+                abastecer o estoque! Insira as informações do novo produto
+                abaixo. Capriche no título e na URL da foto — afinal, o cliente
+                compra primeiro com os olhos. Assim que você clicar em salvar,
+                os dados serão sincronizados com todas as nossas unidades e o
+                produto estará pronto para brilhar na vitrine.
+            </p>
+        </div>
+
+        <!-- form -->
+        <form id="form-produto" action="" class="
+            grid
+            grid-cols-2
+            gap-2
+
+            p-2
+            bg-blue-50
+
+            [&_.col]:flex
+            [&_.col]:flex-col
+
+            [&_label]:pl-4
+            [&_label]:font-semibold
+            [&_label]:text-sm
+            [&_label]:text-blue-400
+
+            [&_.input]:px-2
+            [&_.input]:py-1
+            [&_.input]:rounded-2xl
+            [&_.input]:outline-none
+            [&_.input]:bg-blue-400
+            [&_.input]:hover:bg-blue-600
+
+            [&_button]:px-3
+            [&_button]:py-2
+            [&_button]:my-2
+            [&_button]:rounded-full
+            [&_button]:text-white
+            [&_button]:bg-blue-600
+            [&_button]:hover:bg-blue-900
+            [&_button]:cursor-pointer
+        ">
+            <div class="col">
+                <label for="titulo">Titulo</label>
+                <input id="titulo" class="input" type="text">
+            </div>
+            <div class="col">
+                <label for="preco">Preço</label>
+                <input id="preco" class="input" type="number">
+            </div>
+            <div class="col col-span-2">
+                <label for="foto">Foto</label>
+                <input id="foto" class="input" type="text">
+            </div>
+            <div class="col">
+                <label for="avaliacao" class="form-label">Avaliação</label>
+                <select type="text" class="input" id="avaliacao">
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5" selected>⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="categoria">Categoria</label>
+                <select type="text" class="input" id="categoria">
+                    <option value="Tênis">👟 Tênis</option>
+                    <option value="Óculos">🕶️ Óculos</option>
+                    <option value="Camiseta"> 👕 Camiseta</option>
+                </select>
+            </div>
+            <div class="col col-span-2">
+                <label for="descricao">Descrição</label>
+                <textarea name="descricao" id="descricao" rows="5" class="input"></textarea>
+            </div>
+            <div class="col-span-2 flex flex-row justify-center gap-2">
+                <button type="button" id="btn-salvar-produto">Salvar produto</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/components/NavBar.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

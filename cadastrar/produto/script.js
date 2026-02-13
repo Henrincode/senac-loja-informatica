@@ -8,7 +8,7 @@ function fnAlterarFoto() {
 }
 
 function fnLimparCampos() {
-    document.getElementById("form-produtos").reset()
+    document.getElementById("form-produto").reset()
 }
 
 function fnCadastrarProdutos() {
@@ -23,7 +23,7 @@ function fnCadastrarProdutos() {
     }
     console.dir(formDados)
 
-    fetch('http://localhost:3000/produto/', {
+    fetch('http://localhost:3000/api/produto/', {
         method: "POST",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(formDados)

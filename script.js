@@ -5,7 +5,7 @@ function fnMontarCardProduto(produto) {
                     class="" alt="${produto.nome}">
                 <div class="flex-1 p-4 text-white">
                     <h5 class="text-2xl">${produto.titulo}</h5>
-                    <p class="text-lg">${produto.descricao}</p>
+                    <p class="text-lg whitespace-pre-line">${produto.descricao}</p>
                     <div class="flex flex-row justify-between mt-2">
                         <span class="text-xl">R$ ${produto.preco}</span>
                         <div class="flex flex-row items-center gap-2 text-yellow-300">
@@ -43,15 +43,15 @@ function fnCarregarDados() {
         rota_categoria = categoria + "/"
         const filtros = `
             <span>Ordenar por: </span>
-            <a href="/site-loja/?categoria=${categoria}&ordem=preco">preço</a>
-            <a href="/site-loja/?categoria=${categoria}&ordem=titulo">titulo</a>
+            <a href="/?categoria=${categoria}&ordem=preco">preço</a>
+            <a href="/?categoria=${categoria}&ordem=titulo">titulo</a>
         `
         document.querySelector('#filtros').innerHTML = filtros
     } else {
         const filtros = `
             <span>Ordenar por: </span>
-            <a href="/site-loja/?ordem=preco">preço</a>
-            <a href="/site-loja/?ordem=titulo">titulo</a>
+            <a href="/?ordem=preco">preço</a>
+            <a href="/?ordem=titulo">titulo</a>
         `
         document.querySelector('#filtros').innerHTML = filtros
     }
@@ -61,7 +61,7 @@ function fnCarregarDados() {
         rota_ordem = ordem + "/"
     }
 
-    let url = 'http://localhost:3000/produtos/'
+    let url = 'http://localhost:3000/api/produtos/'
     if (existe_categoria) {
         url += rota_categoria + rota_ordem
     } else if (existe_ordem) {

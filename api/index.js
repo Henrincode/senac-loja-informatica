@@ -25,13 +25,13 @@ conexao.connect((erro) => {
 })
 
 // Hello Word
-app.get('/', function (req, res) {
+app.get('/api', function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.send('ZecaInfo')
 })
 
 // get all products
-app.get("/produtos", function (req, res) {
+app.get("/api/produtos", function (req, res) {
     const ordem = req.query.ordem
     conexao.query(`SELECT * FROM produtos ${ordem ? `order by ${ordem}` : "order by id desc"}`, ((erro, lista_produtos, campos) => {
         // console.log(lista_produtos)
@@ -40,14 +40,14 @@ app.get("/produtos", function (req, res) {
 })
 
 // pegar lista de categorias
-app.get("/lista/categorias", function (req, res) {
+app.get("/api/lista/categorias", function (req, res) {
     conexao.query(`SELECT distinct categoria FROM produtos`, ((erro, lista_categorias, campos) => {
         res.send(lista_categorias)
     }))
 })
 
 // filtrar categorias
-app.get("/produtos/:categoria/", function (req, res) {
+app.get("/api/produtos/:categoria", function (req, res) {
     const categoria = req.params.categoria
     conexao.query(`SELECT * FROM produtos where categoria = '${categoria}'`, ((erro, lista_produtos, campos) => {
         res.send(lista_produtos)
@@ -55,7 +55,7 @@ app.get("/produtos/:categoria/", function (req, res) {
 })
 
 // filtrar com ordem
-app.get("/produtos/:categoria/:ordem", function (req, res) {
+app.get("/api/produtos/:categoria/:ordem", function (req, res) {
     const categoria = req.params.categoria
     const ordem = req.params.ordem
     conexao.query(`SELECT * FROM produtos where categoria = '${categoria}' order by ${ordem}`, ((erro, lista_produtos, campos) => {
@@ -64,14 +64,14 @@ app.get("/produtos/:categoria/:ordem", function (req, res) {
 })
 
 // get units
-app.get("/unidades", function (req, res) {
-    conexao.query("SELECT * FROM unidades", ((erro, lista_produtos, campos) => {
+app.get("/api/unidades", function (req, res) {
+    conexao.query("SELECT * FROM unidades order by id desc", ((erro, lista_produtos, campos) => {
         res.send(lista_produtos)
     }))
 })
 
 // creat product
-app.post("/produto/", function (req, res) {
+app.post("/api/produto", function (req, res) {
 
     const { titulo, preco, descricao, avaliacao, foto, categoria } = req.body;
 
@@ -88,9 +88,11 @@ app.post("/produto/", function (req, res) {
 })
 
 // creat unit
-app.post("/unidades/", function (req, res) {
+app.post("/api/unidades", function (req, res) {
 
     const { nome_da_loja, telefone, email, endereco, latitude, longitude, foto } = req.body;
+
+    console.log(req.body)
 
     conexao.query(`
         INSERT INTO unidades (nome_da_loja, telefone, email, endereco, latitude, longitude, foto)

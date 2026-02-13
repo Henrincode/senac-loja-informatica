@@ -24,7 +24,7 @@ function fnMontarCardUnidade(u){
 }
 
 function fnCarregarDados(){
-    fetch('http://localhost:3000/unidades/', { method: 'GET'})
+    fetch('http://localhost:3000/api/unidades/', { method: 'GET'})
     .then(response => response.json ())
     .then((unidades) => {
         unidades.forEach(unidade => {

@@ -2,22 +2,22 @@
   "name": "loja_de_informatica",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/roberto-mazor/loja_de_informatica#readme",
+  "homepage": "https://github.com/henrincode/loja_de_informatica#readme",
   "bugs": {
-    "url": "https://github.com/roberto-mazor/loja_de_informatica/issues"
+    "url": "https://github.com/henrincode/loja_de_informatica/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roberto-mazor/loja_de_informatica.git"
+    "url": "git+https://github.com/henrincode/loja_de_informatica.git"
   },
-  "license": "ISC",
-  "author": "Roberto Mazor",
+  "license": "MIT",
+  "author": "Henrique Marques",
   "type": "module",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon api/index.js"
   },
   "dependencies": {
     "cors": "^2.8.6",

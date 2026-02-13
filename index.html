@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja do Zé</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div id="navBar"></div>
+
+    <div class="box">
+        <h1 class="text-2xl sm:text-4xl md:text-6xl lg:text-8xl text-center text-gray-700 mb-10 mt-10">
+            👟 Lista de produtos
+        </h1>
+        
+        <!-- filtro -->
+        <div id="filtros" class="
+            flex flex-row justify-center items-baseline gap-2
+
+            mb-10
+            [&_span]:text-xl
+            [&_span]:text-gray-500
+
+            [&_a]:px-2
+            [&_a]:py-0.5
+            [&_a]:rounded-lg
+            [&_a]:text-white
+            [&_a]:bg-blue-500
+            [&_a]:hover:bg-blue-400
+            [&_a]:cursor-pointer
+        ">
+        </div>
+        <!-- filtro -->
+
+        <ul id="listaProdutos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></ul>
+    </div>
+    <script src="/components/NavBar.js"></script>
+    <script src="script.js"></script>
+    <script src="listCategories.js"></script>
+</body>
+
+</html>
