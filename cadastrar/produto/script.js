@@ -1,3 +1,5 @@
+const { createElement } = require("react")
+
 function fnAlterarFoto() {
     if (foto.value != '') {
         document.getElementById("fundo-imagem").style.backgroundImage = `url('${foto.value}')`
@@ -49,4 +51,12 @@ btn_salvar.addEventListener("click", function () {
 })
 
 
- 
+ function alerta(msg){
+    const menssagem = document.querySelector('#menssagem')
+    
+    const div = createElement('div')
+
+    div.innerHTML = 'teste'
+
+    menssagem.append = div
+ }

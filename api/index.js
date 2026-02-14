@@ -73,38 +73,29 @@ app.get("/api/unidades", function (req, res) {
 // creat product
 app.post("/api/produto", function (req, res) {
 
-    const { titulo, preco, descricao, avaliacao, foto, categoria } = req.body;
+    const data = req.body
 
-    conexao.query(`
-        INSERT INTO produtos (titulo, foto, descricao, preco, avaliacao, categoria)
-        values ('${titulo}','${foto}','${descricao}', '${preco}', '${avaliacao}', '${categoria}')`,
+    conexao.query('INSERT INTO produtos set ?', [data],
         function (erro, resultado) {
             if (erro) {
-                res.json(erro);
+                res.json(erro)
             }
-
-            res.send(resultado.insertId);
-        });
+            res.send(resultado.insertId)
+        })
 })
 
 // creat unit
 app.post("/api/unidades", function (req, res) {
 
-    const { nome_da_loja, telefone, email, endereco, latitude, longitude, foto } = req.body;
+    const data = req.body
 
-    console.log(req.body)
-
-    conexao.query(`
-        INSERT INTO unidades (nome_da_loja, telefone, email, endereco, latitude, longitude, foto)
-        values ('${nome_da_loja}', '${telefone}', '${email}', '${endereco}', '${latitude}', '${longitude}', '${foto}')`,
+    conexao.query('INSERT INTO unidades set ?', [data],
         function (erro, resultado) {
             if (erro) {
-                res.json(erro);
+                res.json(erro)
             }
-
-            res.send(resultado.insertId);
-        });
+            res.send(resultado.insertId)
+        })
 })
-
 
 app.listen(3000)

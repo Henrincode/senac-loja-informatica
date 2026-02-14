@@ -2,7 +2,7 @@ function fnMontarCardUnidade(u){
     
     let cartao = `
         <li class="overflow-hidden rounded-xl border-4 border-blue-100 hover:border-blue-300 shadow shadow-blue-700/40 bg-slate-700">
-            <img class="aspect-video object-cover" src="${u.foto}">
+            <img class="w-full aspect-video object-cover" src="${u.foto}">
             ${gmap(u.latitude, u.longitude)}
             <ul class="flex flex-col gap-1 px-3 py-2 text-white">
                 <li class="border-b-2 border-gray-400/20 font-semibold text-xl text-center">
