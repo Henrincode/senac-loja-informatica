@@ -1,12 +1,15 @@
 import express from 'express'
 import { createConnection } from 'mysql'
 import cors from 'cors'
+import bodyParser from 'body-parser'
 
 
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
 app.use(cors())
-app.use(express.json())
 
 const conexao = createConnection({
     host: '108.179.193.209',
@@ -96,6 +99,27 @@ app.post("/api/unidades", function (req, res) {
             }
             res.send(resultado.insertId)
         })
+})
+
+// LOGIN
+app.post("/api/login", (req, res) => {
+    const usuario = req.body.usuario
+    const senha = req.body.senha
+
+    conexao.query(`
+        select * from usuarios
+        where usuario = '${usuario}' and senha = '${senha}'
+    `, (erro, resultado, campos) => {
+        if (erro) {
+            res.send(erro)
+        } else {
+            if (resultado.length > 0) {
+                res.status(200).send('Sucesso!')
+            } else {
+                res.status(401).send('Inválido')
+            }
+        }
+    })
 })
 
 app.listen(3000)

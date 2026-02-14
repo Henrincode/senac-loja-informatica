@@ -1,5 +1,3 @@
-const { createElement } = require("react")
-
 function fnAlterarFoto() {
     if (foto.value != '') {
         document.getElementById("fundo-imagem").style.backgroundImage = `url('${foto.value}')`
@@ -51,12 +49,21 @@ btn_salvar.addEventListener("click", function () {
 })
 
 
- function alerta(msg){
+ function alerta(){
     const menssagem = document.querySelector('#menssagem')
     
-    const div = createElement('div')
+    const div = document.createElement('div')
+    div.classList.add('opacity-0', 'duration-300', 'bg-green-200', 'px-4', 'py-2', 'rounded-full')
 
-    div.innerHTML = 'teste'
+    div.innerHTML = 'Produto cadastrado'
 
-    menssagem.append = div
+    menssagem.append(div)
+
+    setTimeout(() => {
+        div.classList.remove('opacity-0')
+    }, 100)
+
+    setTimeout(() => {
+        div.classList.add('opacity-0')
+    }, 5000)
  }
