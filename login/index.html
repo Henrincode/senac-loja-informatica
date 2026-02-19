@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja do Zé</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div id="navBar"></div>
+
+    <!-- corpo -->
+    <div class="box">
+        <!-- título -->
+        <h2 class="mb-10 mt-10 text-4xl text-center text-gray-700">🔒 Área Restrita</h2>
+
+        <!-- form -->
+        <form id="form-login" action="#" class="
+            flex
+            flex-col
+            gap-2
+
+            max-w-sm
+            p-2
+            mx-auto
+            border-3
+            rounded-xl
+
+            transition-all
+            **:transition-all
+            hover:-translate-y-1
+
+            hover:shadow-lg
+            hover:shadow-black/30
+            
+            border-blue-200
+            bg-blue-400
+
+            [&_.input]:px-2
+            [&_.input]:py-1
+            [&_.input]:rounded-xl
+            [&_.input]:outline-0
+            [&_.input]:bg-white
+            [&_.input]:hover:bg-blue-100
+            [&_.input]:focus:bg-blue-100
+
+            [&_.button]:p-2
+            [&_.button]:rounded-xl
+            [&_.button]:font-semibold
+            [&_.button]:text-md
+            [&_.button]:text-center
+            [&_.button]:hover:cursor-pointer
+            [&_.button]:text-white
+            [&_.button]:bg-blue-500
+            [&_.button]:hover:bg-blue-600
+        ">
+            <input required id="usuario" type="email" placeholder="E-Mail" class="input">
+            <input required id="senha" type="password" placeholder="Senha" class="input">
+            <div class="flex flex-row gap-2">
+                <button id="btn-login" type="button" class="button flex-1">
+                    Entrar
+                </button>
+                <a href="/cadastrar/usuario/" class="button flex-1">
+                    Registrar
+                </a>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="/components/NavBar.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

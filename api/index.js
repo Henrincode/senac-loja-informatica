@@ -3,7 +3,7 @@ import { createConnection } from 'mysql'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
-
+// config
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -30,7 +30,7 @@ conexao.connect((erro) => {
 // Hello Word
 app.get('/api', function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.send('ZecaInfo')
+    res.send('Hello Word')
 })
 
 // get all products
@@ -42,14 +42,14 @@ app.get("/api/produtos", function (req, res) {
     }))
 })
 
-// pegar lista de categorias
+// get all categories
 app.get("/api/lista/categorias", function (req, res) {
     conexao.query(`SELECT distinct categoria FROM produtos`, ((erro, lista_categorias, campos) => {
         res.send(lista_categorias)
     }))
 })
 
-// filtrar categorias
+// filter categories
 app.get("/api/produtos/:categoria", function (req, res) {
     const categoria = req.params.categoria
     conexao.query(`SELECT * FROM produtos where categoria = '${categoria}'`, ((erro, lista_produtos, campos) => {
@@ -57,7 +57,7 @@ app.get("/api/produtos/:categoria", function (req, res) {
     }))
 })
 
-// filtrar com ordem
+// filter order
 app.get("/api/produtos/:categoria/:ordem", function (req, res) {
     const categoria = req.params.categoria
     const ordem = req.params.ordem
@@ -66,7 +66,7 @@ app.get("/api/produtos/:categoria/:ordem", function (req, res) {
     }))
 })
 
-// get units
+// find units
 app.get("/api/unidades", function (req, res) {
     conexao.query("SELECT * FROM unidades order by id desc", ((erro, lista_produtos, campos) => {
         res.send(lista_produtos)
@@ -101,8 +101,8 @@ app.post("/api/unidades", function (req, res) {
         })
 })
 
-// LOGIN
-app.post("/api/login", (req, res) => {
+// login
+app.post("/api/login/", (req, res) => {
     const usuario = req.body.usuario
     const senha = req.body.senha
 
@@ -111,15 +111,29 @@ app.post("/api/login", (req, res) => {
         where usuario = '${usuario}' and senha = '${senha}'
     `, (erro, resultado, campos) => {
         if (erro) {
-            res.send(erro)
+            res.send('deu erro', erro)
         } else {
             if (resultado.length > 0) {
-                res.status(200).send('Sucesso!')
+                res.sendStatus(200)
             } else {
-                res.status(401).send('Inválido')
+                res.sendStatus(401)
             }
         }
     })
+})
+
+// create user
+app.post("/api/usuario", function (req, res) {
+
+    const data = req.body
+
+    conexao.query('INSERT INTO usuarios set ?', [data],
+        function (erro, resultado) {
+            if (erro) {
+                res.json(erro)
+            }
+            res.send(resultado)
+        })
 })
 
 app.listen(3000)
