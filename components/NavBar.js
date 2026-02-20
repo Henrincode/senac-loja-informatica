@@ -10,11 +10,4 @@ fetch('/components/navBar.html')
     placeholder.replaceWith(nav)
   })
 
-//   try {
-
-//     const response = await fetch('/components/NavBar.html')
-//     const  html = ''
-    
-//   }catch(error){
-//     console.log(error)
-//   }
+document.querySelector('body').classList.add('min-h-dvh', 'pt-14')

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Dashboard Template · Bootstrap v5.0</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="h-dvh">
+
+    <div id="navBar"></div>
+
+    <main class="flex flex-row h-full">
+        <div class="w-50 p-2 text-center bg-gray-300">
+            <h1 class="h2">Produtos</h1>
+
+        </div>
+
+        <div class="flex-1 flex flex-col p-4 overflow-auto">
+            <h3 class="text-2xl mb-4">Produtos</h3>
+            <table class="table-fixed flex-1">
+                <thead class="border-b-2 border-blue-50">
+                    <tr>
+                        <th scope="col">FOTO</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">TÍTULO</th>
+                        <th scope="col">DESCRIÇÃO</th>
+                        <th scope="col">CATEGORIA</th>
+                        <th scope="col">PREÇO</th>
+                        <th scope="col">AVALIAÇÃO</th>
+                        <th scope="col">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-produtos" class="[&_td]:p-2 [&_tr]:even:bg-blue-50 [&_.estrelas]:text-yellow-300">
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="/components/NavBar.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

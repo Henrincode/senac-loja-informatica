@@ -42,6 +42,15 @@ app.get("/api/produtos", function (req, res) {
     }))
 })
 
+// get product by id /produto
+app.get("/api/produto/:id", function (req, res) {
+    const id = req.params.id
+    conexao.query("SELECT * FROM produtos where id = ? ", [id],
+        function (erro, dados, campos) {
+            res.json(dados)
+        })
+})
+
 // get all categories
 app.get("/api/lista/categorias", function (req, res) {
     conexao.query(`SELECT distinct categoria FROM produtos`, ((erro, lista_categorias, campos) => {
