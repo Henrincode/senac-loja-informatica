@@ -13,11 +13,11 @@ function fnCarregarDados() {
         .catch(err => console.log(err.message))
 }
 
-async function fnMontarProduto(produto) {
+function fnMontarProduto(produto) {
     const imagem = document.querySelector('#p-imagem')
     const titulo = document.querySelector('#p-titulo')
     const preco = document.querySelector('#p-preco')
-    const estrelas = document.querySelector('#p-estrelas')
+    const avaliacao = document.querySelector('#p-estrelas')
     const descricao = document.querySelector('#p-descricao')
 
     imagem.innerHTML = `
@@ -26,7 +26,8 @@ async function fnMontarProduto(produto) {
     `
     titulo.innerHTML = produto.titulo
     preco.innerHTML = produto.preco
-    estrelas.innerHTML = `${estrelas(produto.estrelas)}`
+
+    avaliacao.innerHTML = estrelas(produto.avaliacao)
     descricao.innerHTML = produto.descricao
 }
 
