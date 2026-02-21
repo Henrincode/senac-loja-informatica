@@ -1,3 +1,5 @@
+const listaProdutos = document.querySelector("#lista-produtos")
+
 function fnMontarTabela(produto) {
     let linha = `
             <tr>
@@ -25,11 +27,14 @@ function fnMontarTabela(produto) {
                 <td>
                 <a href="/admin/produto/?id=${produto.id}">🔎</a>
                 <a href="#">✒️</a>
-                <a href="#">🗑️</a>
+                <button type='button' onClick="fnExcluirProdutoDB(this, ${produto.id})"
+                class="
+                    cursor-pointer
+                ">🗑️</button>
                 </td>
             </tr>
     `
-    document.querySelector("#lista-produtos").innerHTML += linha
+    listaProdutos.innerHTML += linha
 }
 
 fnCarregarDados()
@@ -45,6 +50,17 @@ function fnCarregarDados() {
         .catch(erro => console.log(erro.message))
 }
 
+function fnExcluirProdutoDB(e, id) {
+    fetch('http://localhost:3000/api/produto/' + id, { method: 'DELETE' })
+        .then(() => {
+            alerta('Produto apagado')
+                e.closest('tr').remove()
+        })
+        .catch(erro => console.log(erro.message))
+}
+
+alerta('teste')
+
 function estrelas(e) {
     let estrelas = ''
     for (i = 1; i <= 5; i++) {
@@ -55,4 +71,27 @@ function estrelas(e) {
         }
     }
     return estrelas
+}
+
+function alerta(msg) {
+    const menssagem = document.querySelector('#menssagem')
+
+    const div = document.createElement('div')
+    div.classList.add('opacity-0', 'duration-300', 'bg-green-200', 'px-4', 'py-2', 'rounded-full')
+
+    div.innerHTML = msg
+
+    menssagem.append(div)
+
+    setTimeout(() => {
+        div.classList.remove('opacity-0')
+    }, 100)
+
+    setTimeout(() => {
+        div.classList.add('opacity-0')
+    }, 5000)
+
+    setTimeout(() => {
+        div.remove()
+    }, 6000)
 }

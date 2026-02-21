@@ -96,6 +96,15 @@ app.post("/api/produto", function (req, res) {
         })
 })
 
+// delete product by id
+app.delete("/api/produto/:id", function (req, res) {
+    const id = req.params.id
+    conexao.query("delete from produtos where id = ? ", [id],
+        function (erro, dados, campos) {
+            res.json(dados)
+        })
+})
+
 // creat unit
 app.post("/api/unidades", function (req, res) {
 
